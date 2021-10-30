@@ -32,6 +32,7 @@
                         <tr>
                         <td>{{ $item->unit_code }}</td>
                         <td>{{ $item->unit_name }}</td>
+                        <td>Hellop</td>
                         <td>{{$item->updated_at}}</td>
                         <td><a href="{{route('student_assignment.download',$item->assign_id)}}"><i class="fa fa-download"></i></a></td> 
                         </tr>
