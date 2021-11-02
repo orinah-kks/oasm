@@ -107,7 +107,7 @@ class LecturerAssignmentController extends Controller
            return Response::json(['errors' => $error->errors()->all()]);
        }
 
-    //    $lec_id = Lecturer::where('user_id',Auth::user()->id)->pluck('id')->first();
+        // $lec_id = Lecturer::where('user_id',Auth::user()->id)->pluck('id')->first();
         if($request->hasfile('lec_assignment'))
         {
             $image =$request->file('lec_assignment');
@@ -120,11 +120,9 @@ class LecturerAssignmentController extends Controller
             $oasms->lecturer_id = Auth::user()->id;
             $oasms->assign_path=$name;
             $oasms->save();
-
-
         }
-return redirect()->route('lecturer_assignment.index');
-      
+        return redirect()->route('lecturer_assignment.index');
+            
     }
 
     /**

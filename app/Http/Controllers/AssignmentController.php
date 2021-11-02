@@ -6,7 +6,8 @@ use App\Assignment;
 use App\Unit;
 use App\Student;
 use App\Submited;
-use Auth;
+// use Auth;
+use Illuminate\Support\Facades\Auth ;
 use Response;
 use Illuminate\Http\Request;
 use Validator;
@@ -20,7 +21,7 @@ class AssignmentController extends Controller
      */
     public function index()
     {
-        $course_id = Student::where('id',Auth::user()->id)->pluck('course_id')->first();
+        $course_id = Student::where('user_id', Auth::user()->id)->value('course_id');
         //
 
         // dd($course_id);
@@ -89,28 +90,34 @@ class AssignmentController extends Controller
        {
            return Response::json(['errors' => $error->errors()->all()]);
        }
-    //    $student_id = Student::find(Auth::user()->id);
-       $course_id = Student::where('id', Auth::user()->id)->value('course_id');
-        // dd($student_id);
+        $student_id = Student::where('user_id', Auth::user()->id)->value('id');
+        $course_id = Student::where('user_id', Auth::user()->id)->value('course_id');
+        // dd($course_id);
 
         if($request->hasfile('student_assignment'))
         {
-            $image =$request->file('student_assignment');
-            $name =$request->file('student_assignment')->getClientOriginalName();
-            $destinationPath ='/Submited_Assignments';
+            $image = $request->file('student_assignment');
+            $name = $request->file('student_assignment')->getClientOriginalName();
+            $destinationPath = '/Submited_Assignments';
             $image->move (public_path() . $destinationPath, $name);
-            $oasms= new Submited();
-            $oasms->course_id =$course_id;
-            $oasms->unit_id =$request->input('unit_id');
-            $oasms->student_id= Auth::user()->id;
-            $oasms->status = '0'; 
-            $oasms->marks = '0'; 
-            $oasms->assign_path=$name;
-            $oasms->save();
-
-
+            $oasms = Submited::create([
+                'student_id' => $student_id,
+                'course_id' =>  $course_id,
+                'unit_id'   =>  $request->input('unit_id'),
+                'status'    =>  '0',
+                'marks' =>  '0',
+                'assign_path'   =>  $name
+            ]);
+            /* $oasms = new Submited();
+            $oasms->course_id = $course_id;
+            $oasms->unit_id = 
+            $oasms->student_id = Auth::user()->id;
+            $oasms->status = '0';
+            $oasms->marks = '0';
+            $oasms->assign_path = $name;
+            $oasms->save(); */
         }
-return redirect()->route('student_assignment.index');
+        return redirect()->route('student_assignment.index');
       
         
       
