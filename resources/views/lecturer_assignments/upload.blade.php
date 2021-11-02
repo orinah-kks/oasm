@@ -15,7 +15,7 @@
             </div>
             </div>
             <div class="card-block">
-            <form id="main" method="get" action="{{route('lecturer_assignment.upload_store')}}" enctype="multipart/form-data" >
+            <form id="main" method="get" action="{{route('lecturer_assignment.upload_store')}}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -24,13 +24,12 @@
                                     <div class="col-sm-10">
                                         <select name="course_id" class="form-control" >
                                             @foreach ($courses as $item)
-                                                
-                                        <option value="{{$item->id}}">{{$item->name}}</option>
+                                            <option value="{{$item->id}}">{{$item->name}}</option>
                                             @endforeach
                                         </select>
                                    <span class="messages"></span>
                                     </div>
-                                    </div>
+                            </div>
                     </div>
                     <div class="col-md-6">
                         <label>Select Unit</label>
@@ -60,7 +59,7 @@
                                         </select>
                                    <span class="messages"></span>
                                     </div>
-                                    </div>
+                            </div>
                     </div>
 
                     <div class="col-md-6">
@@ -70,7 +69,7 @@
                                         <input type="number" name="marks" id="" class="form-control">
                                    <span class="messages"></span>
                                     </div>
-                                    </div>
+                            </div>
                     </div>
                 </div>
         

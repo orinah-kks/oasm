@@ -19,9 +19,10 @@
                 <table class="table">
                 <thead>
                 <tr class="text-uppercase">
-                <th>UNIT CODE</th>
-                <th>UNIT NAME</th>
-                <th>DATE ASSIGNED</th>
+                        <th>UNIT CODE</th>
+                        <th>UNIT NAME</th>
+                        <th>DATE ASSIGNED</th>
+                        <th>ACTION</th>
                  </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,9 @@
                 <td>{{$item->unit_name}}</td>
             
                 <td>{{$item->updated_at}}</td>
+                <td>
+                        <a href="{{route('lecturer_assignment.upload_results', $item->unit_code)}}" class="btn btn-primary"><i class="fa fa-upload mr-2"></i>Marks</a>
+                </td>
                 </tr>
                         
                 @endforeach

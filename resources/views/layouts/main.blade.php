@@ -1,15 +1,7 @@
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from html.codedthemes.com/mash-able/dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 03 Feb 2020 11:40:45 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
 <head>
 <title>Online Assignment Submission System</title>
 

@@ -67,19 +67,16 @@ class LecturerAssignmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
-        //
-
         $units = Unit::all();
         $courses = Course::all();
-// dd($courses);
         return view('lecturer_assignments.create',compact('units','courses'));
     }
+
     public function upload_results()
     {
-        //
-
         $units = Unit::all();
         $courses = Course::all();
         $students = Student::all();
