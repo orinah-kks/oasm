@@ -34,7 +34,7 @@
             
                 <td>{{$item->updated_at}}</td>
                 <td>
-                        <a href="{{route('lecturer_assignment.upload_results', $item->unit_code)}}" class="btn btn-primary"><i class="fa fa-upload mr-2"></i>Marks</a>
+                        <a href="{{ url('lecturer_assignment/upload_results/'.  $item->unit_code) }}" class="btn btn-primary"><i class="fa fa-upload mr-2"></i>Marks</a>
                 </td>
                 </tr>
                         

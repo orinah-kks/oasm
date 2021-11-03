@@ -75,14 +75,18 @@ class LecturerAssignmentController extends Controller
         return view('lecturer_assignments.create',compact('units','courses'));
     }
 
-    public function upload_results()
+    public function upload_results($unit_id)
     {
-        $units = Unit::all();
-        $courses = Course::all();
-        $students = Student::all();
-        return view('lecturer_assignments.upload',compact('units','courses','students'));
+        $unit = Unit::where('unit_code', $unit_id)->value('id');
+        $assignments = Submited::where('unit_id', $unit)->get();
+        $count = $assignments->count();
+        // dd($count);
+        // $units = Unit::all();
+        // $courses = Course::all();
+        // $students = Student::all();
+        return view('lecturer_assignments.upload',compact('assignments', 'count'));
     }
-
+// name  marks
     /**
      * Store a newly created resource in storage.
      *
@@ -167,36 +171,18 @@ class LecturerAssignmentController extends Controller
         //
     }
     public function upload_store(Request  $request){
-        $rules = [
-            'course_id'    =>  'required',
-            'unit_id'    =>  'required',
-            'student_id'    =>  'required',
-            'marks'    =>  'required',
-        ];
-        $error = Validator::make($request->all(), $rules);
-    
-       if($error->fails())
-       {
-           return Response::json(['errors' => $error->errors()->all()]);
-       }
-       $course_id =$request->input('course_id');
-       $unit_id =$request->input('unit_id');
-       $student_id =$request->input('student_id');
-       $marks =$request->input('marks');
-
-    //    dd($student_id);
-       Submited::where([
-        ['course_id', '=', $course_id],
-        ['unit_id', '=', $unit_id],
-        ['student_id', '=', $student_id],
-        ])->update([
-           'marks'=>$marks,
-           'status'=>'1'
-
-       ]);
-       
-return redirect()->route('lecturer_assignment.submited');
-
+        $ids = $request->input('val');
+        $marks = $request->input('marks');
+       //Bulk Upload
+        $i = 0;
+        foreach($ids as $id){
+            Submited::where('student_id', $id)->update([
+                'marks' => $marks[$i],
+                'status' => '1'
+            ]);
+            $i++;
+        }
+        return redirect()->route('lecturer_assignment.submited'); 
     }
 
     public function SubmittedAssignmentDownload(Request $request,$id)
