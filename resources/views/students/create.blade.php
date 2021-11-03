@@ -12,7 +12,7 @@
     <div class="form-group row">
     <div class="col-md-6">        
      <label class="">Student Name</label>      
-    <input type="text" class="form-control" id="usernameP" name="name" placeholder="Enter Name">
+    <input type="name" class="form-control" id="usernameP" name="name" placeholder="Enter Name">
     <span class="messages popover-valid"></span>
     </div>
     <div class="col-md-6">        
@@ -24,7 +24,7 @@
     <div class="form-group row">
     <div class="col-md-6">        
      <label class="">Registration Number</label>      
-    <input type="text" class="form-control" id="usernameP" name="reg_no" placeholder="Enter Code">
+    <input type="number" class="form-control" id="usernameP" name="reg_no" placeholder="Enter Code">
     <span class="messages popover-valid"></span>
     </div>
     <div class="col-md-6">        

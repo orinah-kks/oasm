@@ -46,11 +46,11 @@ Route::get('submited_assignment/{id}','AssignmentController@SubmittedAssignmentD
 
 //.........................Lecturer assignmets...............//
 Route::get('lecturer_assignment/create','LecturerAssignmentController@create')->name('lecturer_assignment.create');
-Route::get('lecturer_assignment/upload_results','LecturerAssignmentController@upload_results')->name('lecturer_assignment.upload_results');
+Route::get('lecturer_assignment/upload_results/{id}','LecturerAssignmentController@upload_results')->name('lecturer_assignment.upload_results');
 Route::get('lecturer_assignment/submited','LecturerAssignmentController@submited')->name('lecturer_assignment.submited');
 Route::get('lecturer_assignment/index','LecturerAssignmentController@index')->name('lecturer_assignment.index');
 Route::post('lecturer_assignment/store','LecturerAssignmentController@store')->name('lecturer_assignment.store');
-Route::get('lecturer_assignment/upload_store','LecturerAssignmentController@upload_store')->name('lecturer_assignment.upload_store');
+Route::post('lecturer_assignment/upload_store','LecturerAssignmentController@upload_store')->name('lecturer_assignment.upload_store');
 Route::get('lecturer_submited_assignment/{id}','LecturerAssignmentController@SubmittedAssignmentDownload')->name('lecturer_submited_assignment.download');
 
 
